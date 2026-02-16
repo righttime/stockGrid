@@ -1,0 +1,27 @@
+# Kiwoom Trading WebApp - Docker Compose
+version: "3.8"
+
+services:
+  backend:
+    build: ./backend
+    container_name: kiwoom-backend
+    restart: always
+    # [Decision] 보안: 외부 포트 노출 제거. 프론트엔드 Nginx를 통해서만 접근 가능.
+    # ports:
+    #   - "8000:8000"
+    volumes:
+      - ./backend/.env:/app/.env
+      - ./backend/data:/app/data
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  frontend:
+    build: ./frontend
+    container_name: kiwoom-frontend
+    restart: always
+    ports:
+      - "8080:80" # 호스트의 8080을 컨테이너 80에 매핑 (호스트 Nginx와 충돌 회피)
+    depends_on:
+      - backend
+    environment:
+      - VITE_API_URL=/api # 상대 경로로 설정하여 Nginx 프록시 활용

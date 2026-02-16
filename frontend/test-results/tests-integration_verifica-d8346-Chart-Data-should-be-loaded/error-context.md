@@ -1,0 +1,99 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - img [ref=e7]
+        - heading "KIWOOMPRO" [level=1] [ref=e12]
+      - generic [ref=e13]:
+        - combobox [ref=e14]:
+          - option "Main" [selected]
+          - option "Tech"
+        - button [ref=e15]:
+          - img [ref=e16]
+      - button "SOR" [ref=e21]
+    - generic [ref=e22]:
+      - generic [ref=e23]:
+        - generic [ref=e24]:
+          - img [ref=e25]
+          - text: OPEN
+        - generic [ref=e28]:
+          - img [ref=e29]
+          - text: STABLE
+      - generic [ref=e33]:
+        - button "1" [ref=e34]
+        - button "5" [ref=e35]
+        - button "15" [ref=e36]
+        - button "60" [ref=e37]
+        - button "D" [ref=e38]
+        - button "W" [ref=e39]
+      - button [ref=e40]:
+        - img [ref=e41]
+  - main [ref=e44]:
+    - generic [ref=e46]:
+      - text: "005930"
+      - button [ref=e47]:
+        - img [ref=e48]
+    - generic [ref=e52]:
+      - text: "000660"
+      - button [ref=e53]:
+        - img [ref=e54]
+    - generic [ref=e58]:
+      - text: "035420"
+      - button [ref=e59]:
+        - img [ref=e60]
+    - generic [ref=e64]:
+      - text: "035720"
+      - button [ref=e65]:
+        - img [ref=e66]
+    - generic [ref=e70]:
+      - text: "005380"
+      - button [ref=e71]:
+        - img [ref=e72]
+    - generic [ref=e76]:
+      - text: "005490"
+      - button [ref=e77]:
+        - img [ref=e78]
+    - generic [ref=e82]:
+      - text: "051910"
+      - button [ref=e83]:
+        - img [ref=e84]
+    - generic [ref=e88]:
+      - text: "000270"
+      - button [ref=e89]:
+        - img [ref=e90]
+    - generic [ref=e94]:
+      - text: "012330"
+      - button [ref=e95]:
+        - img [ref=e96]
+    - generic [ref=e100]:
+      - text: "068270"
+      - button [ref=e101]:
+        - img [ref=e102]
+    - generic [ref=e106]:
+      - text: "105560"
+      - button [ref=e107]:
+        - img [ref=e108]
+    - generic [ref=e112]:
+      - text: "055550"
+      - button [ref=e113]:
+        - img [ref=e114]
+    - generic [ref=e118]:
+      - text: "000810"
+      - button [ref=e119]:
+        - img [ref=e120]
+    - generic [ref=e124]:
+      - text: "034220"
+      - button [ref=e125]:
+        - img [ref=e126]
+    - generic [ref=e130]:
+      - text: "017670"
+      - button [ref=e131]:
+        - img [ref=e132]
+    - generic [ref=e136]:
+      - text: "018260"
+      - button [ref=e137]:
+        - img [ref=e138]
+```

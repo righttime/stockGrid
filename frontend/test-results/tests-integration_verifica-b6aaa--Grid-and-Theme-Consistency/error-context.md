@@ -1,0 +1,243 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - img [ref=e7]
+        - heading "KIWOOMPRO" [level=1] [ref=e12]
+      - generic [ref=e13]:
+        - combobox [ref=e14]:
+          - option "Main" [selected]
+          - option "Tech"
+        - button [ref=e15]:
+          - img [ref=e16]
+      - button "SOR" [ref=e21]
+    - generic [ref=e22]:
+      - generic [ref=e23]:
+        - generic [ref=e24]:
+          - img [ref=e25]
+          - text: OPEN
+        - generic [ref=e28]:
+          - img [ref=e29]
+          - text: STABLE
+      - generic [ref=e33]:
+        - button "1" [ref=e34]
+        - button "5" [ref=e35]
+        - button "15" [ref=e36]
+        - button "60" [ref=e37]
+        - button "D" [ref=e38]
+        - button "W" [ref=e39]
+      - button [ref=e40]:
+        - img [ref=e41]
+  - main [ref=e44]:
+    - generic [ref=e45]:
+      - generic [ref=e46]:
+        - text: "005930"
+        - button [ref=e47]:
+          - img [ref=e48]
+      - table [ref=e51]:
+        - row [ref=e52]:
+          - cell
+          - cell [ref=e53]:
+            - link "Charting by TradingView" [ref=e57] [cursor=pointer]:
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/
+              - img [ref=e58]
+          - cell [ref=e62]
+    - generic [ref=e66]:
+      - generic [ref=e67]:
+        - text: "000660"
+        - button [ref=e68]:
+          - img [ref=e69]
+      - table [ref=e72]:
+        - row [ref=e73]:
+          - cell
+          - cell [ref=e74]:
+            - link "Charting by TradingView" [ref=e78] [cursor=pointer]:
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/
+              - img [ref=e79]
+          - cell [ref=e83]
+    - generic [ref=e87]:
+      - generic [ref=e88]:
+        - text: "035420"
+        - button [ref=e89]:
+          - img [ref=e90]
+      - table [ref=e93]:
+        - row [ref=e94]:
+          - cell
+          - cell [ref=e95]:
+            - link "Charting by TradingView" [ref=e99] [cursor=pointer]:
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/
+              - img [ref=e100]
+          - cell [ref=e104]
+    - generic [ref=e108]:
+      - generic [ref=e109]:
+        - text: "035720"
+        - button [ref=e110]:
+          - img [ref=e111]
+      - table [ref=e114]:
+        - row [ref=e115]:
+          - cell
+          - cell [ref=e116]:
+            - link "Charting by TradingView" [ref=e120] [cursor=pointer]:
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/
+              - img [ref=e121]
+          - cell [ref=e125]
+    - generic [ref=e129]:
+      - generic [ref=e130]:
+        - text: "005380"
+        - button [ref=e131]:
+          - img [ref=e132]
+      - table [ref=e135]:
+        - row [ref=e136]:
+          - cell
+          - cell [ref=e137]:
+            - link "Charting by TradingView" [ref=e141] [cursor=pointer]:
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/
+              - img [ref=e142]
+          - cell [ref=e146]
+    - generic [ref=e150]:
+      - generic [ref=e151]:
+        - text: "005490"
+        - button [ref=e152]:
+          - img [ref=e153]
+      - table [ref=e156]:
+        - row [ref=e157]:
+          - cell
+          - cell [ref=e158]:
+            - link "Charting by TradingView" [ref=e162] [cursor=pointer]:
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/
+              - img [ref=e163]
+          - cell [ref=e167]
+    - generic [ref=e171]:
+      - generic [ref=e172]:
+        - text: "051910"
+        - button [ref=e173]:
+          - img [ref=e174]
+      - table [ref=e177]:
+        - row [ref=e178]:
+          - cell
+          - cell [ref=e179]:
+            - link "Charting by TradingView" [ref=e183] [cursor=pointer]:
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/
+              - img [ref=e184]
+          - cell [ref=e188]
+    - generic [ref=e192]:
+      - generic [ref=e193]:
+        - text: "000270"
+        - button [ref=e194]:
+          - img [ref=e195]
+      - table [ref=e198]:
+        - row [ref=e199]:
+          - cell
+          - cell [ref=e200]:
+            - link "Charting by TradingView" [ref=e204] [cursor=pointer]:
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/
+              - img [ref=e205]
+          - cell [ref=e209]
+    - generic [ref=e213]:
+      - generic [ref=e214]:
+        - text: "012330"
+        - button [ref=e215]:
+          - img [ref=e216]
+      - table [ref=e219]:
+        - row [ref=e220]:
+          - cell
+          - cell [ref=e221]:
+            - link "Charting by TradingView" [ref=e225] [cursor=pointer]:
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/
+              - img [ref=e226]
+          - cell [ref=e230]
+    - generic [ref=e234]:
+      - generic [ref=e235]:
+        - text: "068270"
+        - button [ref=e236]:
+          - img [ref=e237]
+      - table [ref=e240]:
+        - row [ref=e241]:
+          - cell
+          - cell [ref=e242]:
+            - link "Charting by TradingView" [ref=e246] [cursor=pointer]:
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/
+              - img [ref=e247]
+          - cell [ref=e251]
+    - generic [ref=e255]:
+      - generic [ref=e256]:
+        - text: "105560"
+        - button [ref=e257]:
+          - img [ref=e258]
+      - table [ref=e261]:
+        - row [ref=e262]:
+          - cell
+          - cell [ref=e263]:
+            - link "Charting by TradingView" [ref=e267] [cursor=pointer]:
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/
+              - img [ref=e268]
+          - cell [ref=e272]
+    - generic [ref=e276]:
+      - generic [ref=e277]:
+        - text: "055550"
+        - button [ref=e278]:
+          - img [ref=e279]
+      - table [ref=e282]:
+        - row [ref=e283]:
+          - cell
+          - cell [ref=e284]:
+            - link "Charting by TradingView" [ref=e288] [cursor=pointer]:
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/
+              - img [ref=e289]
+          - cell [ref=e293]
+    - generic [ref=e297]:
+      - generic [ref=e298]:
+        - text: "000810"
+        - button [ref=e299]:
+          - img [ref=e300]
+      - table [ref=e303]:
+        - row [ref=e304]:
+          - cell
+          - cell [ref=e305]:
+            - link "Charting by TradingView" [ref=e309] [cursor=pointer]:
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/
+              - img [ref=e310]
+          - cell [ref=e314]
+    - generic [ref=e318]:
+      - generic [ref=e319]:
+        - text: "034220"
+        - button [ref=e320]:
+          - img [ref=e321]
+      - table [ref=e324]:
+        - row [ref=e325]:
+          - cell
+          - cell [ref=e326]:
+            - link "Charting by TradingView" [ref=e330] [cursor=pointer]:
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/
+              - img [ref=e331]
+          - cell [ref=e335]
+    - generic [ref=e339]:
+      - generic [ref=e340]:
+        - text: "017670"
+        - button [ref=e341]:
+          - img [ref=e342]
+      - table [ref=e345]:
+        - row [ref=e346]:
+          - cell
+          - cell [ref=e347]:
+            - link "Charting by TradingView" [ref=e351] [cursor=pointer]:
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/
+              - img [ref=e352]
+          - cell [ref=e356]
+    - generic [ref=e360]:
+      - generic [ref=e361]:
+        - text: "018260"
+        - button [ref=e362]:
+          - img [ref=e363]
+      - table [ref=e366]:
+        - row [ref=e367]:
+          - cell
+          - cell [ref=e368]:
+            - link "Charting by TradingView" [ref=e372] [cursor=pointer]:
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/
+              - img [ref=e373]
+          - cell [ref=e377]
+```
