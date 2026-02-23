@@ -39,9 +39,9 @@ const selectStock = (stock: { code: string, name: string }) => {
 }
 
 const handleSearch = () => {
-  // 키보드 선택 중이면 해당 항목 선택
   if (selectedIndex.value >= 0 && selectedIndex.value < suggestions.value.length) {
-    selectStock(suggestions.value[selectedIndex.value])
+    const selected = suggestions.value[selectedIndex.value]
+    if (selected) selectStock(selected)
     return
   }
   if (query.value.length >= 2) {

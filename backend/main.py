@@ -32,7 +32,11 @@ async def lifespan(app: FastAPI):
         await load_all_stocks_from_api(kiwoom_client.access_token, kiwoom_client.host)
         
         logger.info("Step 3: Starting Real-time WebSocket Connection...")
-        asyncio.create_task(kiwoom_client.connect_websocket())
+        # [Fix] Reload 시 task 중복 생성 방지
+        if kiwoom_client._ws_task is None or kiwoom_client._ws_task.done():
+            kiwoom_client._ws_task = asyncio.create_task(kiwoom_client.connect_websocket())
+        else:
+            logger.info("WebSocket task already running, skip.")
     else:
         logger.error("CRITICAL: Failed to obtain Access Token. Real-time features will be disabled.")
     
@@ -69,4 +73,4 @@ app = create_app()
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=False)

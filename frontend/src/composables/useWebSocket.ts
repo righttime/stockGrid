@@ -72,16 +72,23 @@ export function useWebSocket() {
 
   /**
    * 종목 구독: 서버가 차트 스냅샷 → 실시간 tick 순으로 전송
+   * [Fix] WS 상태별 안전 처리:
+   *   - OPEN: 즉시 subscribe 전송
+   *   - CONNECTING: subscribeInfos에 적재 → onopen에서 일괄 전송
+   *   - null/CLOSED: connect() 후 onopen에서 일괄 전송
    */
   const subscribe = (symbol: string, callbacks: SymbolCallbacks, timeframe: string = 'D') => {
     listeners.set(symbol, callbacks)
     subscribeInfos.set(symbol, { timeframe })
 
-    if (!socket || socket.readyState !== WebSocket.OPEN) {
-      connect()
-    } else {
+    if (socket && socket.readyState === WebSocket.OPEN) {
+      // 소켓이 열려있으면 즉시 전송
       sendMessage({ type: 'subscribe', symbol, timeframe })
+    } else if (!socket || socket.readyState === WebSocket.CLOSED) {
+      // 소켓이 없거나 닫힌 경우 새로 연결 (onopen에서 subscribeInfos 전체 전송)
+      connect()
     }
+    // CONNECTING 상태면 아무것도 안 함 → onopen에서 subscribeInfos 전체 전송됨
   }
 
   /**

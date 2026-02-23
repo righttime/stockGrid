@@ -1,5 +1,4 @@
 # Kiwoom Trading WebApp - Docker Compose
-version: "3.8"
 
 services:
   backend:
@@ -20,7 +19,7 @@ services:
     container_name: kiwoom-frontend
     restart: always
     ports:
-      - "8080:80" # 호스트의 8080을 컨테이너 80에 매핑 (호스트 Nginx와 충돌 회피)
+      - "9090:80" # 호스트의 9090을 컨테이너 80에 매핑 (호스트 Nginx와 충돌 회피)
     depends_on:
       - backend
     environment:

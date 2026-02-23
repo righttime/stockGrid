@@ -2,7 +2,7 @@
 import { ref, computed, watch, nextTick, onMounted, onUnmounted } from 'vue'
 import SearchBox from './components/SearchBox.vue'
 import StockChart from './components/StockChart.vue'
-import { Settings, Users, X, Plus, LayoutGrid, Wifi, Globe, TrendingUp, Maximize2, Minimize2 } from 'lucide-vue-next'
+import { Settings, Users, X, Plus, LayoutGrid, Wifi, Globe, TrendingUp, Maximize2, Minimize2, GripVertical } from 'lucide-vue-next'
 
 // [Decision] 종목명 매핑: 앱 로딩 시 백엔드에서 종목 마스터를 가져와 로컬 캐시
 const stockNames = ref<Record<string, string>>({})
@@ -67,12 +67,18 @@ const deleteGroup = (name: string) => {
   if (Object.keys(groups.value).length <= 1) return
   if (confirm(`Delete group "${name}"?`)) {
     delete groups.value[name]
-    currentGroupName.value = Object.keys(groups.value)[0]
+    const keys = Object.keys(groups.value)
+    currentGroupName.value = keys.length > 0 ? (keys[0] as string) : 'Main'
   }
 }
 
 const addStockToGroup = (symbol: string) => {
-  if (!currentGroup.value.includes(symbol)) groups.value[currentGroupName.value].push(symbol)
+  if (!currentGroup.value.includes(symbol)) {
+    if (!groups.value[currentGroupName.value]) {
+      groups.value[currentGroupName.value] = []
+    }
+    groups.value[currentGroupName.value]?.push(symbol)
+  }
 }
 
 const removeStockFromGroup = (symbol: string) => {
@@ -122,7 +128,27 @@ const toggleFullscreen = (symbol: string) => {
 }
 const exitFullscreen = () => { fullscreenSymbol.value = null }
 
-// ESC로 풀스크린 종료
+// [Decision] 드래그 앤 드롭: 차트 순서 변경
+const draggedIndex = ref<number | null>(null)
+const draggableCardIndex = ref<number | null>(null)
+const onDragStart = (idx: number) => {
+  draggedIndex.value = idx
+}
+const onDragOver = (e: DragEvent) => {
+  e.preventDefault()
+  if (e.dataTransfer) e.dataTransfer.dropEffect = 'move'
+}
+const onDrop = (targetIdx: number) => {
+  if (draggedIndex.value === null || draggedIndex.value === targetIdx) return
+  const list = [...currentGroup.value]
+  const moved = list.splice(draggedIndex.value, 1)[0]
+  if (moved) {
+    list.splice(targetIdx, 0, moved)
+    groups.value[currentGroupName.value] = list
+  }
+  draggedIndex.value = null
+  draggableCardIndex.value = null
+}
 const onKeyDown = (e: KeyboardEvent) => {
   if (e.key === 'Escape') exitFullscreen()
 }
@@ -153,7 +179,7 @@ onUnmounted(() => {
         <div class="flex items-center gap-2 ml-4">
           <select v-model="currentGroupName"
             class="bg-transparent text-[11px] font-bold text-slate-400 border-none outline-none cursor-pointer">
-            <option v-for="(v, k) in groups" :key="k" :value="k" class="bg-[#0d1017]">{{ k }}</option>
+            <option v-for="(_, k) in groups" :key="k" :value="k" class="bg-[#0d1017]">{{ k }}</option>
           </select>
           <button @click="showGroupEditor = true" class="p-1 hover:bg-white/5 rounded-lg text-slate-500 transition-all">
             <Users :size="14" />
@@ -176,7 +202,7 @@ onUnmounted(() => {
         </div>
 
         <div class="flex items-center gap-0.5 p-0.5 bg-white/[0.02] rounded-lg">
-          <button v-for="tf in ['1', '5', '15', '60', 'D', 'W']" :key="tf" @click="config.timeframe = tf"
+          <button v-for="tf in ['1', '5', '15', '30', '45', '60', 'D', 'W']" :key="tf" @click="config.timeframe = tf"
             class="timeframe-btn" :class="{ active: config.timeframe === tf }">{{ tf }}</button>
         </div>
 
@@ -204,11 +230,13 @@ onUnmounted(() => {
 
     <!-- 4x4 Chart Grid -->
     <main :class="{ 'fullscreen-mode': fullscreenSymbol }">
-      <div v-for="baseSymbol in currentGroup.slice(0, 16)" :key="baseSymbol + config.preferSOR" :class="[
+      <div v-for="(baseSymbol, index) in currentGroup.slice(0, 16)" :key="baseSymbol + config.preferSOR" :class="[
         'chart-card group',
         fullscreenSymbol && fullscreenSymbol !== baseSymbol ? 'chart-hidden' : '',
-        fullscreenSymbol === baseSymbol ? 'fullscreen-card' : ''
-      ]" @dblclick="toggleFullscreen(baseSymbol)">
+        fullscreenSymbol === baseSymbol ? 'fullscreen-card' : '',
+        draggedIndex === index ? 'opacity-50' : ''
+      ]" :draggable="draggableCardIndex === index" @dragstart="onDragStart(index)" @dragover="onDragOver"
+        @drop="onDrop(index)" @dragend="draggableCardIndex = null" @dblclick="toggleFullscreen(baseSymbol)">
         <div class="stock-header">
           <div class="flex items-center gap-2">
             <div class="flex items-center">
@@ -228,6 +256,10 @@ onUnmounted(() => {
             </div>
           </div>
           <div class="flex items-center gap-1">
+            <button @mousedown="draggableCardIndex = index" @mouseup="draggableCardIndex = null"
+              class="opacity-0 group-hover:opacity-100 cursor-grab active:cursor-grabbing text-slate-700 hover:text-slate-400 transition-all">
+              <GripVertical :size="10" />
+            </button>
             <button @click.stop="toggleFullscreen(baseSymbol)"
               class="opacity-0 group-hover:opacity-100 text-slate-600 hover:text-blue-400 transition-all">
               <Maximize2 v-if="fullscreenSymbol !== baseSymbol" :size="10" />
@@ -338,7 +370,7 @@ onUnmounted(() => {
 
         <div class="p-6">
           <div class="flex items-center gap-2 mb-6 p-1 bg-black/40 rounded-xl">
-            <button v-for="(v, k) in groups" :key="k" @click="currentGroupName = k as string"
+            <button v-for="(_, k) in groups" :key="k" @click="currentGroupName = k as string"
               :class="currentGroupName === k ? 'bg-white/10 text-white shadow-sm' : 'text-slate-500 hover:text-slate-300'"
               class="flex-1 py-2 text-[11px] font-bold rounded-lg transition-all uppercase">
               {{ k }}
